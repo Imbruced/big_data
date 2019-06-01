@@ -51,7 +51,3 @@ class NextBike:
         TODO use kafka class and functions to append data to kafka
         :return:
         """
-
-
-n = NextBike.url()
-print(type(n.data))
