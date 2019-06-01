@@ -1,0 +1,7 @@
+{
+  "NextBike": {
+    "data_url": "http://nextbike.net/maps/nextbike-official.json",
+    "host": "http://nextbike.net",
+    "default_resp": {}
+  }
+}
