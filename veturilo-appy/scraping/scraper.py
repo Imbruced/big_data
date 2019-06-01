@@ -12,9 +12,14 @@ class RequestHandler:
     def req(self, method: str, url: str, default_resp) -> requests.Response:
         resp = getattr(self, method)(url)
         if resp.status_code == 200:
-            return resp.content
+            try:
+                j_data = json.loads(resp.content)
+            except json.JSONDecodeError:
+                j_data = default_resp
         else:
-            return default_resp
+            j_data = default_resp
+
+        return j_data
 
     def get(self, url) -> requests.Response:
         try:
@@ -46,3 +51,7 @@ class NextBike:
         TODO use kafka class and functions to append data to kafka
         :return:
         """
+
+
+n = NextBike.url()
+print(type(n.data))
