@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "342cb57e6af8f45a568a767c0a8d97bf96ca13fe39b30a8a4ce8913be2d5d4f1"
+            "sha256": "6d6e3858947a7b6942c6138e854f0ceee3d48b7a1ecda94c50b070c0d79a3f85"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -45,6 +45,28 @@
             ],
             "version": "==2.8"
         },
+        "kafka": {
+            "hashes": [
+                "sha256:35a49e9a432f6792aad48b2ab09d03867357aaa06eacba2678b7fd0808156e5c",
+                "sha256:ffb3348cd918c31344b1a2eb61f692cbc423c83b1b06466a86de3db8a3f6a018"
+            ],
+            "index": "pypi",
+            "version": "==1.3.5"
+        },
+        "kazoo": {
+            "hashes": [
+                "sha256:8db774f7bdece7d0dc7decb21539ff0852e42c2ffe1c28d7f1ff6f9292a1c3a4",
+                "sha256:a5fa2e400c5068cfee9e86b35cf0dab8232b574152d8e3590d823b3e2426ab5e"
+            ],
+            "version": "==2.5.0"
+        },
+        "pykafka": {
+            "hashes": [
+                "sha256:f0bbd394ae6970042a587c99fe4dc0966e67787249d963d4ce2f810dc9490577"
+            ],
+            "index": "pypi",
+            "version": "==2.8.0"
+        },
         "requests": {
             "hashes": [
                 "sha256:11e007a8a2aa0323f5a921e9e6a2d7e4e67d9877e85773fba9ba6419025cbeb4",
@@ -52,6 +74,19 @@
             ],
             "index": "pypi",
             "version": "==2.22.0"
+        },
+        "six": {
+            "hashes": [
+                "sha256:3350809f0555b11f552448330d0b52d5f24c91a322ea4a15ef22629740f3761c",
+                "sha256:d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73"
+            ],
+            "version": "==1.12.0"
+        },
+        "tabulate": {
+            "hashes": [
+                "sha256:8af07a39377cee1103a5c8b3330a421c2d99b9141e9cc5ddd2e3263fea416943"
+            ],
+            "version": "==0.8.3"
         },
         "urllib3": {
             "hashes": [
