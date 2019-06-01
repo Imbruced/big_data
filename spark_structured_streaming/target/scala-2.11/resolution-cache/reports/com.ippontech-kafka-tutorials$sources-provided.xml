@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="com.ippontech"
+		module="kafka-tutorials$sources"
+		revision="0.0.1-SNAPSHOT"
+		conf="provided"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
+		date="20190526222610"/>
+	<dependencies>
+		<module organisation="org.datasyslab" name="geospark">
+			<revision name="1.1.3" status="release" pubdate="20180426100024" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://geospark.datasyslab.org/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="0">
+				<license name="MIT license" url="https://opensource.org/licenses/MIT"/>
+				<metadata-artifact status="no" details="" size="15232" time="0" location="/home/pawel/.ivy2/cache/org.datasyslab/geospark/ivy-1.1.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/datasyslab/geospark/1.1.3/geospark-1.1.3.pom"/>
+				<caller organisation="com.ippontech" name="kafka-tutorials$sources" conf="provided" rev="1.1.3" rev-constraint-default="1.1.3" rev-constraint-dynamic="1.1.3" callerrev="0.0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="geospark" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="180194" time="0" location="/home/pawel/.ivy2/cache/org.datasyslab/geospark/srcs/geospark-1.1.3-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/datasyslab/geospark/1.1.3/geospark-1.1.3-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>
