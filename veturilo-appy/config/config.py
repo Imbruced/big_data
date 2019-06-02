@@ -36,4 +36,12 @@ class NextBikeConf(metaclass=ConfMeta):
     pass
 
 
+@attr.s
+class LivySessionConf(metaclass=ConfMeta):
+    pass
+
+
+@attr.s
+class LivyStatementConf(metaclass=ConfMeta):
+    pass
 

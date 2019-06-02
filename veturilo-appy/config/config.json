@@ -4,5 +4,15 @@
     "host": "http://nextbike.net",
     "default_resp": {"countries":  []},
     "default_city": 210
+  },
+  "LivyStatement": {
+    "host": "http://localhost:8998",
+    "statement_name": "statements"
+  },
+  "LivySession": {
+    "host": "http://localhost:8998",
+    "session_name": "sessions",
+    "data": {"kind": "spark"},
+    "headers": {"Content-Type": "application/json"}
   }
 }
