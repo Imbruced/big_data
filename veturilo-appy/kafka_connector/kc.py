@@ -1,7 +1,9 @@
 import json
-import random
 
 from kafka import KafkaProducer
+
+from scraping import NextBikeCity
+from config import logger
 
 
 class KafkaConnector:
@@ -36,16 +38,11 @@ class KafkaConnector:
             print('Exception in publishing message')
 
 
-lat = random.randint(40, 60) + random.randint(1, 10000)/10000
-lon = random.randint(15, 25) + random.randint(1, 10000)/10000
-
-data = dict(
-    lat=lat,
-    lon=lon
-)
-
-
 with KafkaConnector() as kaf:
-    kaf.send_message('test1', '1', json.dumps(data).strip())
+    next_bike = NextBikeCity.url()
+    while True:
+        for index, el in next_bike.stream():
+            logger.info(f"{index}, {el}")
+            kaf.send_message('next_bike', str(index), json.dumps(el).strip())
 
 
