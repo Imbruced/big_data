@@ -11,6 +11,10 @@ requests="==2.22.0"
 attrs="*"
 pykafka="*"
 kafka="*"
+flask="*"
+sklearn="*"
+pandas="*"
+
 
 [requires]
 python_version = "3.6"
