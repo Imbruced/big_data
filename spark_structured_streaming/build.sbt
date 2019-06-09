@@ -4,7 +4,7 @@ version := "0.0.1-SNAPSHOT"
 
 scalaVersion := "2.11.12"
 
-val sparkVersion = "2.2.2"
+val sparkVersion = "2.4.0"
 
 libraryDependencies ++= Seq(
   "org.scala-lang" % "scala-library" % scalaVersion.value,
@@ -14,4 +14,3 @@ libraryDependencies ++= Seq(
   
 )
 libraryDependencies += "org.datasyslab" % "geospark" % "1.2.0" % "provided"
-libraryDependencies += "org.datasyslab" %% "geospark-sql" % "1.2.0"
