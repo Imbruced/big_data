@@ -8,6 +8,7 @@ import attr
 from config import logger
 from config import LivyStatementConf
 from config import LivySessionConf
+from lv.text_examples import code
 
 
 @attr.s
@@ -32,12 +33,13 @@ class LivySession:
         response = requests.post(host + "/" + getattr(LivySessionConf, "session_name"),
                                  data=json.dumps(data),
                                  headers=headers)
+        print(response.status_code)
         if response.status_code == 201:
             sesion_id = response.json()["id"]
             return cls(sesion_id, host, True, sesion_id)
         else:
             logger.info(f"Current code is {response.status_code}")
-            raise ConnectionError("Response does not return code 200")
+            raise ConnectionError("Response does not return code 201")
 
     @classmethod
     def from_existing(cls, host=getattr(LivySessionConf, "host"), session_id=0):
@@ -63,6 +65,13 @@ class LivyStatement:
         return r.json()
 
     @classmethod
+    def from_file(cls, livy_session: LivySession, file_path: str):
+        with open(file_path) as file:
+            code = "\n".join(file.readlines())
+
+        return cls.from_text(livy_session, code)
+
+    @classmethod
     def from_text(cls, livy_session: LivySession, code: str, ):
         data = {'code': code}
         statement_id = cls.send_code(
@@ -85,7 +94,6 @@ class LivyStatement:
         response = requests.post(statement_url,
                                  data=json.dumps(data),
                                  headers=headers)
-
         if response.status_code != 201:
             logger.error(f"Returned code {response.status_code}")
             raise ConnectionError("Connection is failed")
@@ -96,25 +104,31 @@ class LivyStatement:
     def create_statements_url(host, session_id, statement_name):
         return f"{host}/sessions/{session_id}/{statement_name}"
 
+# ls = LivySession.create_new()
+ls = LivySession.from_existing(session_id=0)
 
+# cd = code["geospark_prep"]
 
+cd = "pGeom.show()"
 
-ls = LivySession.from_existing(session_id=4)
-
-
-code = """
-
-val spark = SparkSession
-   .builder()
-   .appName("SparkSessionZipsExample")
-   .config("spark.sql.warehouse.dir", warehouseLocation)
-   .enableHiveSupport()
-   .getOrCreate()
-"""
-
-lvst = LivyStatement.from_text(ls, code)
+lvst = LivyStatement.from_text(ls, cd)
 statement_code = lvst.statement_id
+state = "running"
 
-time.sleep(3)
-lvst = LivyStatement(ls, statement_code)
-pprint(lvst.get_status())
+while state != "available":
+    lvst = LivyStatement(ls, statement_code)
+    gstatus = lvst.get_status()
+    state = gstatus["state"]
+    progress = gstatus["progress"]
+
+    try:
+        stat = gstatus["output"]["status"]
+    except TypeError:
+        stat = "Unavialbale"
+
+    logger.info(f"Status: {stat} | State: {state} | Progress: {progress}")
+
+    time.sleep(2)
+    if stat == "error":
+        pprint(gstatus["output"])
+# pprint(lvst.get_status())
