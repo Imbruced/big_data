@@ -38,11 +38,12 @@ class KafkaConnector:
             print('Exception in publishing message')
 
 
-with KafkaConnector() as kaf:
-    next_bike = NextBikeCity.url()
-    while True:
-        for index, el in next_bike.stream():
-            logger.info(f"{index}, {el}")
-            kaf.send_message('next_bike', str(index), json.dumps(el).strip())
+if __name__ == "__main__":
+    with KafkaConnector() as kaf:
+        next_bike = NextBikeCity.url()
+        while True:
+            for index, el in next_bike.stream():
+                logger.info(f"{index}, {el}")
+                kaf.send_message('next_bike', str(index), json.dumps(el).strip())
 
 
