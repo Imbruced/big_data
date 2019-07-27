@@ -19,6 +19,6 @@ with KafkaConnector() as kaf:
             record["date"] = dt
             kaf.send_message("diabetes", str(1), json.dumps(record))
 
-        random_value = random.randint(3, 20)
-        logger.info(f"Sleeping {random_value}")
-        time.sleep(random_value)
+        # random_value = random.randint(3, 20)
+        # logger.info(f"Sleeping {random_value}")
+        # time.sleep(random_value)
